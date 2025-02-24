@@ -52,7 +52,7 @@ namespace Assignment2.Components.Pages.Data
         // TODO
         // define the airports file path  
         // ...................................
-        public static string AIRPORTS_TEXT = "";    // TODO (Update the path)
+        public static string AIRPORTS_TEXT = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\Resources\Files\airports.csv");    // TODO (Update the path)
 
         public static List<Flight> flights = new List<Flight>();
         public static List<string> airports = new List<string>();
@@ -127,9 +127,18 @@ namespace Assignment2.Components.Pages.Data
         {
             List<Flight> found = new List<Flight>();
 
-           // TODO
-           // find all flights that match the input arguments  
-           // ...................................
+            // TODO
+            // find all flights that match the input arguments  
+            // ...................................
+            foreach (Flight flight in flights)
+            {
+                if (flight.From.Equals(from) && flight.To.Equals(to) && (flight.Weekday.Equals(weekday) || weekday.Equals(WEEKDAY_ANY)))
+
+                {
+                    found.Add(flight);
+                }
+
+            }
 
             return found;
         }
